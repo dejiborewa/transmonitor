@@ -3,10 +3,10 @@ import Payments from "./payments";
 
 function Main() {
   return (
-    <div className="w-[80%] bg-main">
+    <main className="w-[80%] bg-main">
       <Dashboard />
       <Payments />
-    </div>
+    </main>
   );
 }
 

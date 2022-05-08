@@ -4,13 +4,13 @@ import Sidebar from "../components/sidebar";
 
 function Home() {
   return (
-    <div>
+    <>
       <Header />
-      <div className="flex">
+      <main className="flex">
         <Sidebar />
         <Main />
-      </div>
-    </div>
+      </main>
+    </>
   );
 }
 

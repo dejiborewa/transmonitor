@@ -15,6 +15,7 @@ const Button = styled.button`
   font-weight: 700;
   font-size: 13px;
   margin-top: 2.5em;
+  font-family: "Roboto", sans-serif;
 `;
 
 const Container = styled.div`
@@ -45,7 +46,7 @@ function Sidebar() {
   };
 
   return (
-    <div className="w-[20%]">
+    <aside className="w-[20%] sticky top-[20px]">
       <Button>GENERATE INVOICE</Button>
       <Container className="px-9 pt-6">
         <h3 className="text-left text-grey mt-6 mb-2 text-sm">Main</h3>
@@ -159,7 +160,7 @@ function Sidebar() {
           </div>
         ))}
       </Container>
-    </div>
+    </aside>
   );
 }
 

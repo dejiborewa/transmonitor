@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { transmonitor } from "../assets/transmonitor";
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
   box-shadow: 0px 4px 10px rgba(79, 79, 79, 0.07);
 `;
 
