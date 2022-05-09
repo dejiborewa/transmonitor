@@ -7,7 +7,7 @@ import { mainGraph } from "../assets/mainGraph";
 import { dashboardData, months, orders, payments } from "../data/dummy";
 
 const Container = styled.section`
-  padding: 0 2em;
+  padding: 0 3em;
   margin-bottom: 2em;
 `;
 

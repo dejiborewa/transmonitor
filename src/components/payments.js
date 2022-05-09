@@ -5,7 +5,7 @@ import { search } from "../assets/search";
 import { dropdownData, tableBodyData, tableHeader } from "../data/dummy";
 
 const Container = styled.section`
-  padding: 0 2em;
+  padding: 0 3em;
 
   .search {
     width: 40%;

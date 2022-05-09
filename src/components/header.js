@@ -45,7 +45,7 @@ function Header() {
             </div>
             <img
               src={dp}
-              className="block rounded-full ml-2 mr-[2em]"
+              className="block rounded-full ml-2 mr-[3em]"
               alt="dp"
             />
           </div>
