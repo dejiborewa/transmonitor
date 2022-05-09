@@ -97,10 +97,6 @@ function Payments() {
     };
   });
 
-  // useEffect(() => {
-  //   if ()
-  // })
-
   return (
     <Container>
       <div>
@@ -204,7 +200,9 @@ function Payments() {
                 {item.status === "Unsettled" && (
                   <div className="py-2 px-4 border border-borderGrey rounded-[30px] w-[135px]">
                     <span className="bg-red-600 rounded-full w-[9px] h-[9px] inline-block"></span>
-                    <span className="text-red-600 ml-2 text-xs">{item.status}</span>
+                    <span className="text-red-600 ml-2 text-xs">
+                      {item.status}
+                    </span>
                   </div>
                 )}
 
