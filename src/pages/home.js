@@ -6,7 +6,7 @@ function Home() {
   return (
     <>
       <Header />
-      <main className="flex">
+      <main className="flex h-screen overflow-hidden">
         <Sidebar />
         <Main />
       </main>

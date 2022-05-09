@@ -8,13 +8,14 @@ import {
 import { useState } from "react";
 
 const Button = styled.button`
+  display: block;
   background-color: #27ae60;
   border-radius: 36px;
   color: white;
   padding: 0.5em 1em;
   font-weight: 700;
   font-size: 13px;
-  margin-top: 2.5em;
+  margin: 2.5em auto 0;
   font-family: "Roboto", sans-serif;
 `;
 
@@ -46,7 +47,7 @@ function Sidebar() {
   };
 
   return (
-    <aside className="w-[20%] sticky top-[20px]">
+    <aside className="w-[20%]">
       <Button>GENERATE INVOICE</Button>
       <Container className="px-9 pt-6">
         <h3 className="text-left text-grey mt-6 mb-2 text-sm">Main</h3>

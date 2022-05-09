@@ -10,7 +10,6 @@ import { merchantProfile } from "../assets/merchantProfile";
 import { arrowBlack } from "../assets/arrowBlack";
 import { vw } from "../assets/vw symbol";
 import { tinyGraph } from "../assets/tinyGraph";
-// import { mainGraph } from "../assets/mainGraph";
 
 export const sidebar_main = [
   {
@@ -123,6 +122,16 @@ export const tableBodyData = [
     price: "$73430",
     transactionNo: "1234567890",
     time: "12:30",
+    status: "Unsettled",
+    action: arrowBlack,
+  },
+
+  {
+    icon: vw,
+    name: 'Apple Mac Book 15" 250 SSD 12GB',
+    price: "$73430",
+    transactionNo: "1234567890",
+    time: "12:30",
     status: "Un-Reconciled",
     action: arrowBlack,
   },
@@ -161,6 +170,25 @@ export const tableBodyData = [
     price: "$73430",
     transactionNo: "1234567890",
     time: "12:30",
+    status: "Unsettled",
+    action: arrowBlack,
+  },
+  {
+    icon: vw,
+    name: 'Apple Mac Book 15" 250 SSD 12GB',
+    price: "$73430",
+    transactionNo: "1234567890",
+    time: "12:30",
+    status: "Settled",
+    action: arrowBlack,
+  },
+
+  {
+    icon: vw,
+    name: 'Apple Mac Book 15" 250 SSD 12GB',
+    price: "$73430",
+    transactionNo: "1234567890",
+    time: "12:30",
     status: "Reconciled",
     action: arrowBlack,
   },
@@ -200,6 +228,16 @@ export const tableBodyData = [
     transactionNo: "1234567890",
     time: "12:30",
     status: "Un-Reconciled",
+    action: arrowBlack,
+  },
+
+  {
+    icon: vw,
+    name: 'Apple Mac Book 15" 250 SSD 12GB',
+    price: "$73430",
+    transactionNo: "1234567890",
+    time: "12:30",
+    status: "Settled",
     action: arrowBlack,
   },
 ];
@@ -210,6 +248,7 @@ export const dropdownData = [
   "Un-Reconciled",
   "Settled",
   "Unsettled",
+  "Pending",
 ];
 
 export const dashboardData = [
@@ -237,3 +276,21 @@ export const dashboardData = [
     graph: tinyGraph,
   },
 ];
+
+export const orders = [
+  {
+    pendingOrders: "20",
+    reconciledOrders: "80",
+    total: "100",
+  },
+];
+
+export const payments = [
+  {
+    unreconciled: "20",
+    reconciledOrders: "80",
+    total: "100",
+  },
+];
+
+export const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];

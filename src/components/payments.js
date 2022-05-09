@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { arrowDown } from "../assets/arrowDown";
 import { search } from "../assets/search";
@@ -58,22 +58,55 @@ const Input = styled.input`
 function Payments() {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [dropDownValue, setDropDownValue] = useState("All");
+  const [filteredData, setFilteredData] = useState(tableBodyData);
+  const dropDownRef = useRef();
 
-  const toggleDropdown = () => {
-    setOpenDropdown((prevState) => !prevState);
+  const filterData = (value) => {
+    if (value === "All") {
+      setFilteredData(tableBodyData);
+    } else {
+      let result = tableBodyData.filter((item) => item.status === value);
+      setFilteredData(result);
+    }
   };
 
   const closeDropdown = (value) => {
     setOpenDropdown(false);
     setDropDownValue(value);
+    filterData(value);
   };
+
+  const toggleDropdown = () => {
+    setOpenDropdown((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (
+        dropDownRef.current &&
+        !dropDownRef.current.contains(e.target) &&
+        !dropDownRef.current.contains(e.currentTarget)
+      ) {
+        setOpenDropdown(false);
+      }
+    };
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  });
+
+  // useEffect(() => {
+  //   if ()
+  // })
 
   return (
     <Container>
       <div>
         <h1 className="w-max text-[30px]">Payments</h1>
       </div>
-      <div className="flex w-full items-center my-4">
+      <div className="flex w-full items-center my-6">
         <p className="text-grey2 text-[13px]">
           Showing <span className="arrowdown mx-2">20 {arrowDown}</span> out of
           500 payments
@@ -88,15 +121,18 @@ function Payments() {
             <div
               className="ml-4 rounded-sm border border-borderGrey w-[150px] flex items-center justify-between pl-4 pr-2 py-1 cursor-pointer select-none"
               onClick={toggleDropdown}
+              ref={dropDownRef}
             >
               {dropDownValue} {arrowDown}
             </div>
+
             {openDropdown && (
               <div className="dropdown absolute top-full left-0 text-left border w-[150px] ml-4 z-10 bg-white">
-                {dropdownData.map((item) => (
+                {dropdownData.map((item, index) => (
                   <div
                     className="h-[33px] cursor-pointer text-tableBody hover:bg-grey4 pl-4 pr-2 py-1"
                     onClick={() => closeDropdown(item)}
+                    key={index}
                   >
                     {item}
                   </div>
@@ -109,9 +145,10 @@ function Payments() {
       <table className="w-full text-xs">
         <thead className="bg-tableBg text-tableHeader text-sm ">
           <tr className="gridTable py-2 px-4">
-            {tableHeader.map((item) => (
+            {tableHeader.map((item, index) => (
               <td
                 className={`text-left ${item === "Item Type" && `col-span-2`} `}
+                key={index}
               >
                 {item}
               </td>
@@ -120,8 +157,11 @@ function Payments() {
         </thead>
 
         <tbody>
-          {tableBodyData.map((item) => (
-            <tr className="gridTable h-[60px] px-4 text-tableHeader tableRow cursor-pointer bg-white">
+          {filteredData.map((item, index) => (
+            <tr
+              className="gridTable h-[60px] px-4 text-tableHeader tableRow cursor-pointer bg-white"
+              key={index}
+            >
               <td className="text-left flex items-center col-span-2 text-tableBody">
                 <span>{item.icon}</span>
                 <span className="ml-3">{item.name}</span>
@@ -156,6 +196,22 @@ function Payments() {
                   <div className="py-2 px-4 border border-borderGrey rounded-[30px] w-[135px]">
                     <span className="bg-yellow rounded-full w-[9px] h-[9px] inline-block"></span>
                     <span className="text-yellow ml-2 text-xs">
+                      {item.status}
+                    </span>
+                  </div>
+                )}
+
+                {item.status === "Unsettled" && (
+                  <div className="py-2 px-4 border border-borderGrey rounded-[30px] w-[135px]">
+                    <span className="bg-red-600 rounded-full w-[9px] h-[9px] inline-block"></span>
+                    <span className="text-red-600 ml-2 text-xs">{item.status}</span>
+                  </div>
+                )}
+
+                {item.status === "Settled" && (
+                  <div className="py-2 px-4 border border-borderGrey rounded-[30px] w-[135px]">
+                    <span className="bg-blue rounded-full w-[9px] h-[9px] inline-block"></span>
+                    <span className="text-blue ml-2 text-xs">
                       {item.status}
                     </span>
                   </div>
